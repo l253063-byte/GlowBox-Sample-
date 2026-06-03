@@ -694,7 +694,7 @@ export default function GlowboxApp() {
             {/* Inline sliding container wrapper */}
             <div className="w-full overflow-hidden py-6 group">
               <div 
-                className="flex gap-6 px-1"
+                className="flex"
                 style={{
                   animation: 'scrollLeft 40s linear infinite',
                   width: 'max-content'
@@ -702,33 +702,37 @@ export default function GlowboxApp() {
                 onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
                 onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
               >
-                {[...galleryStripItems, ...galleryStripItems, ...galleryStripItems].map((strip, index) => (
-                  <div 
-                    key={`${strip.id}-${index}`}
-                    className="min-w-[245px] w-[245px] bg-[#16002A] rounded-2xl overflow-hidden border border-[#16002A] hover:border-white hover:scale-[1.06] transition-all duration-300 shadow-xl flex-shrink-0 cursor-pointer group/card"
-                    style={{
-                      boxShadow: `0 0 0px ${strip.color}00`,
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0 0 25px ${strip.color}44`}
-                    onMouseLeave={(e) => e.currentTarget.style.boxShadow = `0 0 0px ${strip.color}00`}
-                  >
-                    <div className="h-[230px] relative overflow-hidden">
-                      <ImagePlaceholder 
-                        id={strip.id} 
-                        label={strip.title} 
-                        borderColor={strip.color}
-                        height={230}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#16002A] via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <div className="p-4 text-center relative z-10">
-                      <p 
-                        style={{ fontFamily: '"Orbitron", sans-serif', color: strip.color }} 
-                        className="text-[10px] font-black tracking-widest group-hover/card:scale-110 transition-transform"
+                {[...Array(2)].map((_, blockIdx) => (
+                  <div key={blockIdx} className="flex gap-6 pr-6">
+                    {[...galleryStripItems, ...galleryStripItems].map((strip, index) => (
+                      <div 
+                        key={`${strip.id}-${index}`}
+                        className="min-w-[245px] w-[245px] bg-[#16002A] rounded-2xl overflow-hidden border border-[#16002A] hover:border-white hover:scale-[1.06] transition-all duration-300 shadow-xl flex-shrink-0 cursor-pointer group/card"
+                        style={{
+                          boxShadow: `0 0 0px ${strip.color}00`,
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0 0 25px ${strip.color}44`}
+                        onMouseLeave={(e) => e.currentTarget.style.boxShadow = `0 0 0px ${strip.color}00`}
                       >
-                        {strip.title}
-                      </p>
-                    </div>
+                        <div className="h-[230px] relative overflow-hidden">
+                          <ImagePlaceholder 
+                            id={strip.id} 
+                            label={strip.title} 
+                            borderColor={strip.color}
+                            height={230}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#16002A] via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
+                        </div>
+                        <div className="p-4 text-center relative z-10">
+                          <p 
+                            style={{ fontFamily: '"Orbitron", sans-serif', color: strip.color }} 
+                            className="text-[10px] font-black tracking-widest group-hover/card:scale-110 transition-transform"
+                          >
+                            {strip.title}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
@@ -840,26 +844,30 @@ export default function GlowboxApp() {
           {/* Horizontal corporate details (Placeholders 22, 23/37) */}
           <div className="w-full overflow-hidden mb-16">
             <div 
-              className="flex gap-6"
+              className="flex"
               style={{
                 animation: 'scrollLeft 30s linear infinite',
                 width: 'max-content'
               }}
             >
-              {[...Array(3)].fill().map((_, i) => (
-                <div key={i} className="flex gap-6">
-                  <ImagePlaceholder 
-                    id="event_corp_wide_01" 
-                    label="Interactive Corporate Session Setup" 
-                    borderColor={NEON.cyan}
-                    height={220}
-                  />
-                  <ImagePlaceholder 
-                    id="event_corp_wide_02" 
-                    label="Exhibition Showcase Of Team Slogans" 
-                    borderColor={NEON.green}
-                    height={220}
-                  />
+              {[...Array(2)].map((_, blockIdx) => (
+                <div key={blockIdx} className="flex gap-6 pr-6">
+                  {[...Array(4)].fill().map((_, i) => (
+                    <div key={i} className="flex gap-6">
+                      <ImagePlaceholder 
+                        id="event_corp_wide_01" 
+                        label="Interactive Corporate Session Setup" 
+                        borderColor={NEON.cyan}
+                        height={220}
+                      />
+                      <ImagePlaceholder 
+                        id="event_corp_wide_02" 
+                        label="Exhibition Showcase Of Team Slogans" 
+                        borderColor={NEON.green}
+                        height={220}
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -946,56 +954,64 @@ export default function GlowboxApp() {
             
             {/* Slider 1 - Left to Right */}
             <div 
-              className="w-full flex gap-6 py-2"
+              className="w-full flex py-2"
               style={{
                 animation: 'scrollLeft 40s linear infinite',
                 width: 'max-content'
               }}
             >
-              {[...reviewsCarousel, ...reviewsCarousel, ...reviewsCarousel].map((rev, index) => (
-                <div
-                  key={`rev1-${rev.name}-${index}`}
-                  style={{
-                    background: NEON.bgCard,
-                    animation: 'rgbBorder 6s linear infinite'
-                  }}
-                  className="min-w-[280px] w-[280px] p-5 rounded-2xl border-2 text-left flex-shrink-0"
-                >
-                  <div className="flex justify-between items-center mb-2.5">
-                    <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-black text-white">{rev.name}</p>
-                    <div className="flex text-yellow-400">
-                      {[...Array(rev.stars)].map((_, i) => <Star key={i} size={10} fill={NEON.yellow} />)}
+              {[...Array(2)].map((_, blockIdx) => (
+                <div key={`slider1-${blockIdx}`} className="flex gap-6 pr-6">
+                  {[...reviewsCarousel, ...reviewsCarousel].map((rev, index) => (
+                    <div
+                      key={`rev1-${rev.name}-${index}`}
+                      style={{
+                        background: NEON.bgCard,
+                        animation: 'rgbBorder 6s linear infinite'
+                      }}
+                      className="min-w-[280px] w-[280px] p-5 rounded-2xl border-2 text-left flex-shrink-0"
+                    >
+                      <div className="flex justify-between items-center mb-2.5">
+                        <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-black text-white">{rev.name}</p>
+                        <div className="flex text-yellow-400">
+                          {[...Array(rev.stars)].map((_, i) => <Star key={i} size={10} fill={NEON.yellow} />)}
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-300 font-sans leading-relaxed">"{rev.review}"</p>
                     </div>
-                  </div>
-                  <p className="text-xs text-gray-300 font-sans leading-relaxed">"{rev.review}"</p>
+                  ))}
                 </div>
               ))}
             </div>
 
             {/* Slider 2 - Right to Left */}
             <div 
-              className="w-full flex gap-6 py-2"
+              className="w-full flex py-2"
               style={{
                 animation: 'scrollRight 45s linear infinite',
                 width: 'max-content'
               }}
             >
-              {[...reviewsCarousel.slice().reverse(), ...reviewsCarousel.slice().reverse(), ...reviewsCarousel.slice().reverse()].map((rev, index) => (
-                <div
-                  key={`rev2-${rev.name}-${index}`}
-                  style={{
-                    background: NEON.bgCard,
-                    animation: 'rgbBorder 6s linear infinite'
-                  }}
-                  className="min-w-[280px] w-[280px] p-5 rounded-2xl border-2 text-left flex-shrink-0"
-                >
-                  <div className="flex justify-between items-center mb-2.5">
-                    <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-black text-white">{rev.name}</p>
-                    <div className="flex text-yellow-400">
-                      {[...Array(rev.stars)].map((_, i) => <Star key={i} size={10} fill={NEON.yellow} />)}
+              {[...Array(2)].map((_, blockIdx) => (
+                <div key={`slider2-${blockIdx}`} className="flex gap-6 pr-6">
+                  {[...reviewsCarousel.slice().reverse(), ...reviewsCarousel.slice().reverse()].map((rev, index) => (
+                    <div
+                      key={`rev2-${rev.name}-${index}`}
+                      style={{
+                        background: NEON.bgCard,
+                        animation: 'rgbBorder 6s linear infinite'
+                      }}
+                      className="min-w-[280px] w-[280px] p-5 rounded-2xl border-2 text-left flex-shrink-0"
+                    >
+                      <div className="flex justify-between items-center mb-2.5">
+                        <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-black text-white">{rev.name}</p>
+                        <div className="flex text-yellow-400">
+                          {[...Array(rev.stars)].map((_, i) => <Star key={i} size={10} fill={NEON.yellow} />)}
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-300 font-sans leading-relaxed">"{rev.review}"</p>
                     </div>
-                  </div>
-                  <p className="text-xs text-gray-300 font-sans leading-relaxed">"{rev.review}"</p>
+                  ))}
                 </div>
               ))}
             </div>
