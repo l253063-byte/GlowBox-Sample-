@@ -1735,22 +1735,22 @@ export default function GlowboxApp() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           
           {/* Col 1 Brand Slogan */}
-          <div className="space-y-4 text-left">
-            <div className="flex items-center gap-2">
+          <div className="space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
+            <div className="flex items-center justify-center md:justify-start gap-2">
               <GlowCube size={38} color={NEON.cyan} />
               <span style={{ fontFamily: '"Orbitron", sans-serif' }} className="font-black text-sm tracking-widest text-white">GLOWBOX STUDIOS</span>
             </div>
             <p className="text-xs text-gray-400 leading-relaxed font-sans font-light">
               Pakistan's first neon-themed blacklight art studio in Lahore. An immersive, therapeutic night out where you paint in the light.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start w-full">
               <Instagram className="text-gray-400 hover:text-[#FF006E] transition-colors cursor-pointer" size={18} />
               <Facebook className="text-gray-400 hover:text-[#00F5FF] transition-colors cursor-pointer" size={18} />
             </div>
           </div>
 
           {/* Col 2 Quick Directory Navigation */}
-          <div className="space-y-4 text-left">
+          <div className="space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
             <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-extrabold text-white tracking-widest uppercase">QUICK LINKS</p>
             <ul style={{ fontFamily: '"Orbitron", sans-serif' }} className="space-y-2 text-[11px] font-black tracking-widest text-[#FFF]">
               <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">ABOUT US</a></li>
@@ -1762,40 +1762,40 @@ export default function GlowboxApp() {
           </div>
 
           {/* Col 3 Contact info */}
-          <div className="space-y-4 text-left text-xs font-sans">
+          <div className="space-y-4 text-center md:text-left flex flex-col items-center md:items-start text-xs font-sans">
             <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-extrabold text-white tracking-widest uppercase">CONTACT US</p>
-            <div className="space-y-3 text-gray-300">
-              <p className="flex items-center gap-2"><MapPin size={14} className="text-purple-400" /> 📍 Lahore, Pakistan</p>
-              <p className="flex items-center gap-2 font-black leading-none">
+            <div className="space-y-3 text-gray-300 flex flex-col items-center md:items-start">
+              <p className="flex items-center justify-center md:justify-start gap-2"><MapPin size={14} className="text-purple-400" /> 📍 Lahore, Pakistan</p>
+              <p className="flex items-center justify-center md:justify-start gap-2 font-black leading-none">
                 <Phone size={14} className="text-[#FF006E]" /> 
                 <a href="tel:03268644458" style={{ color: NEON.pink, textShadow: `0 0 5px ${NEON.pink}` }}>0326 8644458</a>
               </p>
-              <p className="flex items-center gap-2"><Mail size={14} className="text-[#00F5FF]" /> hello@glowboxstudios.com</p>
-              <p className="flex items-center gap-2"><Clock size={14} className="text-[#39FF14]" /> By Appointment / Booking Only</p>
+              <p className="flex items-center justify-center md:justify-start gap-2"><Mail size={14} className="text-[#00F5FF]" /> hello@glowboxstudios.com</p>
+              <p className="flex items-center justify-center md:justify-start gap-2"><Clock size={14} className="text-[#39FF14]" /> By Appointment / Booking Only</p>
             </div>
           </div>
 
           {/* Col 4 Subscriptions */}
-          <div className="space-y-4 text-left font-sans text-xs">
+          <div className="space-y-4 text-center md:text-left flex flex-col items-center md:items-start font-sans text-xs">
             <p style={{ fontFamily: '"Orbitron", sans-serif' }} className="text-xs font-extrabold text-white tracking-widest uppercase">NEWSLETTER</p>
             <p className="text-gray-400">Stay in the glow — get updates on upcoming events and camps.</p>
             
             {newsletterSuccess ? (
               <div 
                 style={{ borderColor: NEON.green }}
-                className="p-3 bg-green-950/20 rounded-xl border flex items-center gap-2 text-green-400 text-xs shadow-[0_0_10px_rgba(57,255,20,0.1)]"
+                className="p-3 bg-green-950/20 rounded-xl border flex items-center justify-center md:justify-start gap-2 text-green-400 text-xs shadow-[0_0_10px_rgba(57,255,20,0.1)] w-full"
               >
                 <CheckCircle size={14} />
                 <span>You're glowing! Email registered ✨</span>
               </div>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex justify-center md:justify-start gap-2 w-full">
                 <input
                   type="email"
                   value={newsletterEmail}
                   onChange={e => setNewsletterEmail(e.target.value)}
                   placeholder="Enter email address"
-                  className="bg-[#150024] text-white text-xs px-3.5 py-2.5 rounded-xl border border-cyan-400/20 focus:outline-none focus:border-cyan-400 flex-1 min-w-0 font-sans shadow-inner"
+                  className="bg-[#150024] text-white text-xs px-3.5 py-2.5 rounded-xl border border-cyan-400/20 focus:outline-none focus:border-cyan-400 flex-1 min-w-0 font-sans shadow-inner max-w-xs"
                 />
                 <button
                   onClick={handleNewsletterSubmit}

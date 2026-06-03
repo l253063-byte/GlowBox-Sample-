@@ -87,12 +87,10 @@ export function EventModal({ onClose }) {
         backgroundColor: 'rgba(10, 0, 16, 0.9)',
         backdropFilter: 'blur(8px)',
         zIndex: 99999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '16px'
+        overflowY: 'auto',
+        WebkitOverflowScrolling: 'touch'
       }}
-      className="animate-[fadeIn_0.3s_ease-out_forwards]"
+      className="animate-[fadeIn_0.3s_ease-out_forwards] style-scrollbar"
     >
       {/* Floating Particles */}
       {particles.map(p => (
@@ -115,6 +113,16 @@ export function EventModal({ onClose }) {
         />
       ))}
 
+      {/* Centering wrapper — uses min-height + flex so card centers when short, scrolls when tall */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100%',
+          padding: '24px 16px'
+        }}
+      >
       {/* Modal Card */}
       <div 
         style={{
@@ -124,10 +132,9 @@ export function EventModal({ onClose }) {
           borderRadius: '24px',
           maxWidth: '560px',
           width: '100%',
-          position: 'relative',
-          overflow: 'hidden'
+          position: 'relative'
         }}
-        className="p-6 md:p-8 select-none max-h-[90vh] overflow-y-auto style-scrollbar animate-[scaleIn_0.3s_cubic-bezier(0.175, 0.885, 0.32, 1.2)_forwards]"
+        className="p-6 md:p-8 select-none animate-[scaleIn_0.3s_cubic-bezier(0.175, 0.885, 0.32, 1.2)_forwards]"
       >
         {/* Close Button */}
         <button 
@@ -335,6 +342,7 @@ export function EventModal({ onClose }) {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
