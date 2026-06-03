@@ -1,0 +1,6 @@
+{
+  "name": "Glowbox Studios",
+  "description": "Pakistan's first neon-themed blacklight art studio in Lahore. Immersive blacklight creative experience, paint splatter room, and therapeutic art classes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
